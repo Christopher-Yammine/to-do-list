@@ -39,12 +39,13 @@
        todos.innerHTML='';
        let tododiv='';
        let todoslist=[];
-        for (let i=0;i<localStorage.length;i++){
+        for (let i=0;i<=localStorage.length;i++){
             todoslist.push((JSON.parse(window.localStorage.getItem(i))));
-            if (todoslist[i]==null) continue;
+            if (todoslist[i]==null) {continue;}
+            if (todoslist[i].todoDone==0){
             tododiv+=` <div class="notdone">
             <div class="notdonetitle">
-                
+                <h3>${todoslist[i].todoTitle}</h3>
                 <h3>${todoslist[i].todoRank}</h3>
                 
             </div>
@@ -54,14 +55,19 @@
 
             </div>
         </div>
-        <hr>`
+        <hr>`}
         }
         todos.innerHTML+=tododiv;
         $(".btndone").click(function(event){
-           console.log(event.currentTarget.id);
+         
            window.localStorage.removeItem(event.currentTarget.id);
-           
+            todoslist[event.currentTarget.id].todoDone=1;
+            
+            counter--;
            displayUndone();
+           console.log(todoslist);
+
+           
         });
     
 
