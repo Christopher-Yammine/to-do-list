@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>To-do List</title> 
-    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./styles/style.css">
 </head>
 <body>
     <div class="todo-container" id="todo-container">
@@ -15,12 +15,20 @@
         <div class="todo-title">
         
         <div class="todofield ">
-            <input type="text" id="todotext" placeholder="insert todo title here">
-            <input type="text" id="importance" placeholder="rank it">
+            <textarea type="text" id="todotext" placeholder="insert todo title here"></textarea>
+            <select name="importance" id="importance">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </select> 
+            
             
         </div>
         <div class="todofield ">
-            <input type="text" id="description" placeholder="Description">
+            <textarea type="text" id="description" placeholder="Description">
+            </textarea>
             
         </div>
         <div><button class="btn" id="btnadd">+</button></div>
@@ -38,6 +46,7 @@
                         <button class="btndone">🗸</button>
 
                     </div>
+                    
                 </div>
             </div>
         </div>     
@@ -50,6 +59,6 @@
 
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="scripts.js"></script>
+    <script src="./scripts/scripts.js"></script>
 </body>
 </html>

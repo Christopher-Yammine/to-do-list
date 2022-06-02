@@ -96,6 +96,11 @@ body {
     padding: 0 20px 0 20px;
    
 }
+.notdone {
+    
+    margin-bottom: 15px;
+}
+
 
 .btndone {
     height:30px;
