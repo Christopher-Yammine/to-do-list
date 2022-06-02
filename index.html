@@ -8,13 +8,48 @@
     <link rel="stylesheet" href="./style.css">
 </head>
 <body>
-    <div class="todo-container">
-        <div>
-            <h1 class="todo-title">TO-DO list</h1>
+    <div class="todo-container" id="todo-container">
+        <div class="todo-title">
+            <h1>TO-DO list</h1>
         </div>
-     
-    </div>
+        <div class="todo-title">
+        
+        <div class="todofield ">
+            <input type="text" id="todotext" placeholder="insert todo title here">
+            <input type="text" id="importance" placeholder="rank it">
+            
+        </div>
+        <div class="todofield ">
+            <input type="text" id="description" placeholder="Description">
+            
+        </div>
+        <div><button class="btn" id="btnadd">+</button></div>
+        </div>
+        <div class="todo-title">
+            <div class="todos" id="todos">
+                <div class="notdone">
+                    <div class="notdonetitle">
+                        <h3>chris</h3>
+                        <h3>rank</h3>
+                        
+                    </div>
+                    <div class="notdonebody">
+                        <p>description</p>
+                        <button class="btndone">🗸</button>
 
-    
+                    </div>
+                </div>
+            </div>
+        </div>     
+    </div>
+    <div class="done" id="done">
+        <div>
+           <h1  class="done-title">Done</h1> 
+        </div>
+        
+
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="scripts.js"></script>
 </body>
 </html>

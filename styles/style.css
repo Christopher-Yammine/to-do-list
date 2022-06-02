@@ -1,0 +1,107 @@
+body {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    background-color: rgb(71, 71, 71);
+    display: flex;
+    align-content: center;
+    justify-content: space-around;
+}
+.todo-container {
+    width: 35%;
+    margin: 5%;
+    display: flex;
+    flex-direction: column;
+    
+    
+   
+   
+}
+.done {
+    width: 35%;
+    display: flex;
+    flex-direction: column;
+    border-radius :25px;
+    margin: 5%;
+    border : solid;
+    height: fit-content;
+
+
+}
+.done-title{
+    color: white;
+    text-align: center;
+    
+}
+
+
+
+.todo-title{
+    
+    color: white;
+    text-align: center;
+    border-radius :25px;
+    border: solid rgb(0, 172, 172);
+    margin-top: 10px;
+}
+.todofield{
+    display: flex;
+    margin:10px 0 10px 0
+}
+
+
+#todotext {
+    margin-left: 5%;
+    border-radius: 5px;
+    padding: 5px;
+    width: 70%;
+}
+#importance {
+    
+    border-radius: 5px;
+    padding: 5px;
+    width: 20%;
+    margin-right: 5%;
+}
+#description {
+    border-radius: 5px;
+    padding: 5px;
+    width: 100%;
+    margin-right: 5%;
+    margin-left: 5%;
+    height: 40px;
+}
+.btn{
+    
+    padding: 5px;
+    width: 90%;
+    margin-right: 5%;
+    margin-left: 5%;
+    height: 40px;
+    font-size: 20pt;
+    margin-bottom: 5px;
+
+}
+
+.notdonetitle{
+    display:flex;
+    justify-content: space-between;
+    padding: 0 20px 0 20px;
+    
+}
+
+.notdonebody {
+    display:flex;
+    justify-content: space-between;
+    padding: 0 20px 0 20px;
+   
+}
+
+.btndone {
+    height:30px;
+    width: 30px;
+    background-color: green;
+    font-size: 15pt;
+    cursor: pointer;
+    margin-top: 10px;
+}
