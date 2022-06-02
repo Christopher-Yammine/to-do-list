@@ -36,8 +36,12 @@
     }
     function displayUndone(){
         let todos=$("#todos")[0];
+        let donebody=$("#donebody")[0];
+        console.log(donebody);
        todos.innerHTML='';
+       donebody.innerHTML='';
        let tododiv='';
+       let donediv='';
        let todoslist=[];
         for (let i=0;i<=localStorage.length;i++){
             todoslist.push((JSON.parse(window.localStorage.getItem(i))));
@@ -51,32 +55,120 @@
             </div>
             <div class="notdonebody">
                 <p>${todoslist[i].todoDesc}</p>
+                <div>
+                <button class="btncancel" id=${i+2}>❌</button>
+                <button class="edit" id=${i+1}>✏️</button>
                 <button class="btndone" id=${i}>🗸</button>
+                </div>
 
             </div>
         </div>
-        <hr>`}
+        `} else {
+            donediv+=`<div class="donetext">
+            <div class="notdonetitle">
+                <h3>${todoslist[i].todoTitle}</h3>
+                <h3>${todoslist[i].todoRank}</h3>
+                
+            </div>
+            <div class="notdonebody">
+                <p>${todoslist[i].todoDesc}</p>
+                
+
+            </div>
+        </div>
+       `
+            
         }
+
+
+        }
+        donebody.innerHTML+=donediv;
         todos.innerHTML+=tododiv;
         $(".btndone").click(function(event){
          
-           window.localStorage.removeItem(event.currentTarget.id);
-            todoslist[event.currentTarget.id].todoDone=1;
             
             counter--;
+           
+           let status=JSON.parse(window.localStorage.getItem(event.currentTarget.id));
+           let doneObject ={
+            todoId: todoslist[event.currentTarget.id].todoId,
+            todoTitle:todoslist[event.currentTarget.id].todoTitle,
+            todoRank:todoslist[event.currentTarget.id].todoRank,
+            todoDesc:todoslist[event.currentTarget.id].todoDesc,
+            todoDone:1,
+            todoDate:todoslist[event.currentTarget.id].todoDate
+            }
+           window.localStorage.setItem(event.currentTarget.id,JSON.stringify(doneObject));
+        
+           console.log(status.todoDone);
            displayUndone();
-           console.log(todoslist);
-
+           
            
         });
-    
+        $(".edit").click(function(event){
+            $("#edittext").css("display","block");
+            $("#finishediting").css("display","block");
+            editingflag=event.currentTarget.id-1;
+            console.log(editingflag);
+        });
+        $(".btncancel").click(function(event){
+            window.localStorage.removeItem(event.currentTarget.id-2);
+            displayUndone();
+        });
+        $("#finishediting").click(function(event){
+            editedtext=$("#edittext")[0].value;
+            let status=JSON.parse(window.localStorage.getItem(editingflag));
+           let editedObject ={
+            todoId: todoslist[editingflag].todoId,
+            todoTitle:todoslist[editingflag].todoTitle,
+            todoRank:todoslist[editingflag].todoRank,
+            todoDesc:editedtext,
+            todoDone:todoslist[editingflag].todoDone,
+            todoDate:todoslist[editingflag].todoDate
+            }
+           window.localStorage.setItem(editingflag,JSON.stringify(editedObject));
+        
+           console.log(status);
+           displayUndone();
+            
+            $("#edittext")[0].value='';
+            $("#edittext").css("display","none");
+            $("#finishediting").css("display","none");
+            
+        });
+        $("#filter").click(sortRank);
 
         
     
     }
-    displayUndone();
+
+    function sortRank(){
+
+        sortedlist=[];
+        for (let i=0;i<localStorage.length;i++){
+            
+            sortedlist.push((JSON.parse(window.localStorage.getItem(i))));
+            if (sortedlist[i]==null) {continue;}
+           sortedlist.sort();
+           window.localStorage.clear();
+           let sortedObject ={
+            todoId: sortedlist[i].todoId,
+            todoTitle:sortedlist[i].todoTitle,
+            todoRank:sortedlist[i].todoRank,
+            todoDesc:sortedlist[i].todoDesc,
+            todoDone:sortedlist[i].todoDone,
+            todoDate:sortedlist[i].todoDate
+            }
+           window.localStorage.setItem(i,JSON.stringify(sortedObject));
+           
+           displayUndone();
+           
+          
+        }
+       
+        
+
+    }
+
     
-    //console.log(todoObject.todoDate[4]);
-    //console.log(title);
-    //$("#todotext")[0].value='';
- 
+    displayUndone();
